@@ -22,23 +22,34 @@
             width: 50%;
         }
         textarea {
-            width: 100%;
+            width: 95%;
             height: 150px;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 10px;
             resize: none;
         }
-        input[type="file"] {
-            margin: 10px 0;
+        
+        input[type="file"]::file-selector-button {
+            background-color: #76d479;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-right: 10px;
+            width: 100%;
+        }
+        input[type='file']{
+            width: 100px;
         }
         button {
             padding: 10px 20px;
             border: none;
             background-color: #28a745;
             color: white;
-            border-radius: 5px;
+            border-radius: 15px;
             cursor: pointer;
         }
         button:hover {
@@ -56,6 +67,7 @@
         <textarea id="textInput" placeholder="Enter your text here..."></textarea>
         <br>
         <input type="file" id="fileInput" accept=".txt">
+        <br>
         <br>
         <button onclick="countWords()">Count Words</button>
         <div id="result"></div>
