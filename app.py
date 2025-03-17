@@ -15,7 +15,7 @@ def map_function(text_chunk, result_list, index):
         word = word.lower()
         word_count[word] = word_count.get(word, 0) + 1
     result_list[index] = word_count
-    print("thread:",threading.get_ident())
+    print("thread:",threading.get_ident(),index,word_count)
 
 def reduce_function(mapped_data):
     final_count = {}
