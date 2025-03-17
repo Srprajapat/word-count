@@ -97,10 +97,13 @@
             .then(response => response.json())
             .then(data => {
                 let resultDiv = document.getElementById("result");
+                let sum = 0;
                 resultDiv.innerHTML = "<h3>Word Count:</h3>";
                 for (let word in data) {
                     resultDiv.innerHTML += `<p><strong>${word}:</strong> ${data[word]}</p>`;
+                    sum += Number(data[word]);
                 }
+                resultDiv.innerHTML += `<p><strong>Total words:</strong> ${sum}</p>`;
             })
             .catch(error => console.error("Error:", error));
         }
