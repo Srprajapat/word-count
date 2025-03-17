@@ -3,7 +3,6 @@ import threading
 
 app = Flask(__name__)
 
-# Route to serve frontend
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -31,23 +30,19 @@ def word_count():
         return jsonify({'error': 'No text provided'}), 400
     
     text = data['text']
-    chunks = text.split('\n')  # Splitting text by lines
+    chunks = text.split('\n') 
     
-    # Creating shared storage for results
     results = [None] * len(chunks)
     threads = []
     
-    # Creating threads
     for i, chunk in enumerate(chunks):
         thread = threading.Thread(target=map_function, args=(chunk, results, i))
         threads.append(thread)
         thread.start()
     
-    # Joining threads
     for thread in threads:
         thread.join()
     
-    # Reduce phase
     final_word_count = reduce_function(results)
     
     return jsonify(final_word_count)
